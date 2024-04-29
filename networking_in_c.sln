@@ -5,6 +5,8 @@ VisualStudioVersion = 17.8.34511.84
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "networking_in_c", "networking_in_c\networking_in_c.vcxproj", "{D75BB3C2-A645-4482-8273-23DC612D50FC}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "socket_apis", "socket_apis\socket_apis.vcxproj", "{B4A37592-BDAD-42EB-A4BA-9674265C8B1E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{D75BB3C2-A645-4482-8273-23DC612D50FC}.Release|x64.Build.0 = Release|x64
 		{D75BB3C2-A645-4482-8273-23DC612D50FC}.Release|x86.ActiveCfg = Release|Win32
 		{D75BB3C2-A645-4482-8273-23DC612D50FC}.Release|x86.Build.0 = Release|Win32
+		{B4A37592-BDAD-42EB-A4BA-9674265C8B1E}.Debug|x64.ActiveCfg = Debug|x64
+		{B4A37592-BDAD-42EB-A4BA-9674265C8B1E}.Debug|x64.Build.0 = Debug|x64
+		{B4A37592-BDAD-42EB-A4BA-9674265C8B1E}.Debug|x86.ActiveCfg = Debug|Win32
+		{B4A37592-BDAD-42EB-A4BA-9674265C8B1E}.Debug|x86.Build.0 = Debug|Win32
+		{B4A37592-BDAD-42EB-A4BA-9674265C8B1E}.Release|x64.ActiveCfg = Release|x64
+		{B4A37592-BDAD-42EB-A4BA-9674265C8B1E}.Release|x64.Build.0 = Release|x64
+		{B4A37592-BDAD-42EB-A4BA-9674265C8B1E}.Release|x86.ActiveCfg = Release|Win32
+		{B4A37592-BDAD-42EB-A4BA-9674265C8B1E}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

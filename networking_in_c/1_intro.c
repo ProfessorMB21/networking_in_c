@@ -56,13 +56,14 @@ int main()
 	*/
 	PrintAdaptersInformation(adapters);
 
-	// clean up
+	//clean up
 	WSACleanup();
 	free(adapters);
 	printf("Ok.\n");
 
 	return 0;
 }
+
 
 void PrintAdaptersInformation(PIP_ADAPTER_ADDRESSES pAdapterAddr)
 {
