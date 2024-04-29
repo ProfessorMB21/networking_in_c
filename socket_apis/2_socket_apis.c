@@ -40,17 +40,13 @@
 */
 int main()
 {
-	time_t now;
 	WSADATA d;
-
-	time(&now);
 
 	if (WSAStartup(MAKEWORD(2, 2), &d))
 	{
 		fprintf(stderr, "Failed to initialize");
 		return -1;
 	}
-	//printf("The local time is: %s\n", ctime(&now));
 	printf("Configuring local address....\n");
 
 	struct addrinfo hints;
@@ -111,6 +107,35 @@ int main()
 	char request[1024];
 	int bytes_received = recv(socket_client, request, sizeof(request), 0);
 	printf("Received %d bytes.\n", bytes_received);
+
+	// sending response back to user
+	printf("Sending response...\n");
+	const char* response =
+		"HTTP/1.1 200 Ok\r\n"
+		"Connection: close\r\n"
+		"Content-Type: text/html\r\n\r\n"
+		"<p style='color: orange'>Local time is: ";
+	int bytes_sent = send(socket_client, response, strlen(response), 0);
+	printf("Sent %d of %d bytes.\n", bytes_sent, (int)strlen(response));
+
+	// sending the actual time to the user
+	time_t now;
+	time(&now);
+	char* time_msg = ctime(&now);
+	bytes_sent = send(socket_client, time_msg, strlen(time_msg), 0);
+	printf("Sent %d of %d bytes.\n", bytes_sent, (int)strlen(time_msg));
+
+	// close connection to indicate to browser that all of our data is sent
+	printf("Closing connection...\n");
+	closesocket(socket_client);
+
+	// we close listening socket
+	printf("Closing listening socket...\n");
+	closesocket(socket_listen);
+
+	// clean up
+	WSACleanup();
+	printf("Done...\n");
 
 	return 0;
 }
