@@ -128,9 +128,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="2_socket_apis.c" />
+    <ClCompile Include="2_socket_apis_ipv6_support.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\networking_in_c\socket_apis.h" />
+    <ClInclude Include="socket_apis.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

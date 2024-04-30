@@ -18,9 +18,12 @@
     <ClCompile Include="2_socket_apis.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="2_socket_apis_ipv6_support.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\networking_in_c\socket_apis.h">
+    <ClInclude Include="socket_apis.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

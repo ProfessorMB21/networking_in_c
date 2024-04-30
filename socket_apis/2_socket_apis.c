@@ -48,11 +48,11 @@ int main()
 		system("pause");
 		return -1;
 	}
+	
 	printf("Configuring local address....\n");
-
 	struct addrinfo hints;
 	memset(&hints, 0, sizeof(hints));
-	hints.ai_family = AF_INET; // ipv4
+	hints.ai_family = AF_INET; // ipv4 (change this to AF_INET6 for IPv6 implementation)
 	hints.ai_socktype = SOCK_STREAM; // tcp (SOCK_DGRAM for udp)
 	hints.ai_flags = AI_PASSIVE;	 // tells getaddrinfo that we want to
 									 // listen on any available network interface

@@ -1,10 +1,9 @@
 #pragma once
-//#pragma warning(disable : C4996)
+#if defined (_WIN32) // Guard for future support of POSIX sockets in our code
 #ifndef _CRT_SECURE_NO_WARNINGS
 #define _CRT_SECURE_NO_WARNINGS
 #endif
 
-#if defined (_WIN32) // Guard for future support of POSIX sockets in our code
 #ifndef _WIN32_WINNT
 #define _WIN32_WINNT 0x0600
 #endif
@@ -23,7 +22,7 @@
 #define SOCKET int
 #endif
 
-// For ivalid sockets on non-Windows systems
+// For invalid sockets on non-Windows systems
 #if defined (_WIN32)
 #define ISVALIDSOCKET(s) ((s) != INVALID_SOCKET)
 #else
@@ -43,4 +42,9 @@
 #define GETSOCKETERRNO() (WSAGetLastError())
 #else
 #define GETSOCKETERRNO() (errno)
+#endif
+
+// 
+#if !defined(IPV6_V6ONLY)
+#define IPV6_V6ONLY 27
 #endif
