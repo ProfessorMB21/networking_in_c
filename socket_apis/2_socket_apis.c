@@ -45,6 +45,7 @@ int main()
 	if (WSAStartup(MAKEWORD(2, 2), &d))
 	{
 		fprintf(stderr, "Failed to initialize");
+		system("pause");
 		return -1;
 	}
 	printf("Configuring local address....\n");
@@ -64,6 +65,7 @@ int main()
 	if (!ISVALIDSOCKET(socket_listen)) // check if call to socket() was a success
 	{
 		fprintf(stderr, "socket() failed. (%d)\n", GETSOCKETERRNO());
+		system("pause");
 		return 1;
 	}
 
@@ -72,6 +74,7 @@ int main()
 	if (bind(socket_listen, bind_address->ai_addr, bind_address->ai_addrlen))
 	{
 		fprintf(stderr, "bind() failed. (%d)\n", GETSOCKETERRNO());
+		system("pause");
 		return 1;
 	}
 	freeaddrinfo(bind_address); // clean up after binding
@@ -81,17 +84,19 @@ int main()
 	if (listen(socket_listen, 10) < 0)
 	{
 		fprintf(stderr, "listen() failed. (%d)\n", GETSOCKETERRNO());
+		system("pause");
 		return 1;
 	}
-
+	
 	// we start accepting incoming connections
 	printf("Waiting for connection...\n");
 	struct sockaddr_storage client_address;
 	socklen_t client_len = sizeof(client_address);
-	SOCKET socket_client = accept(socket_listen, (struct sockaddr*)&client_address, client_len);
+	SOCKET socket_client = accept(socket_listen, (struct sockaddr*)&client_address, &client_len);
 	if (!ISVALIDSOCKET(socket_client))
 	{
 		fprintf(stderr, "accept() failed. (%d)\n", GETSOCKETERRNO());
+		system("pause");
 		return 1;
 	}
 
@@ -99,7 +104,7 @@ int main()
 	printf("Client is connected...\n");
 	char address_buf[100];
 	getnameinfo((struct sockaddr*)&client_address, client_len, address_buf,
-		sizeof(address_buf), 0, 0, NI_NUMERICHOST);
+		sizeof(address_buf), NULL, 0, NI_NUMERICHOST);
 	printf("Client address: %s\n", address_buf);
 
 	// we expect a HTTP request since this is a web server
@@ -136,6 +141,6 @@ int main()
 	// clean up
 	WSACleanup();
 	printf("Done...\n");
-
+	system("pause");
 	return 0;
 }
